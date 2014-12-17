@@ -36,7 +36,7 @@ csci330_tgp=# SELECT * FROM unices;
 SELECT and FROM
 ---------------
 
-The query here is `SELECT * FROM unices` -- before that on the line is the prompt, and after that (the semicolon) indicates the query is done. This is the simplest query in SQL: every query needs a `SELECT` clause and a `FROM` clause. The `SELECT` describes what columns will be in the result, and the `FROM` describes what table the rows and columns in the result are coming from. Here, the table is called `unices` (a plural of "unix", pronounced like "vertices").
+The query above is `SELECT * FROM unices` -- before that on the line is the prompt, and after that (the semicolon) indicates the query is done. This is the simplest query in SQL: every query needs a `SELECT` clause and a `FROM` clause. The `SELECT` describes what columns will be in the result, and the `FROM` describes what table the rows and columns in the result are coming from. Here, the table is called `unices` (a plural of "unix", pronounced like "vertices").
 
 The `*` has a special meaning that indicates that all columns in the table will be shown in the result. If we want to just get certain columns, or if we want them returned in a certain order, we can specify them by name:
 
@@ -67,7 +67,7 @@ csci330_tgp=# SELECT major_version, minor_version, distro FROM unices;
 ORDER BY
 --------
 
-You may have noticed that this time, the rows got returned in the same order as last time. In this case, it's just the order the rows got added to the table, but the database could have returned the rows in any arbitrary order it wanted to. If you want to enforce an ordering by sorting on a column, tack an `ORDER BY` on to the end of a query:
+You may have noticed that above, the rows got returned in the same order as the last time. In this case, it's just the order the rows got added to the table, but the database could have returned the rows in any arbitrary order it wanted to. If you want to enforce an ordering by sorting on a column, tack an `ORDER BY` on to the end of a query:
 
 ```
 csci330_tgp=# SELECT distro, major_version, minor_version FROM unices ORDER BY major_version;
@@ -145,7 +145,90 @@ csci330_tgp=# SELECT distro, major_version, minor_version FROM unices ORDER BY m
 (17 rows)
 ```
 
+You can even `ORDER BY` columns that are in the table in your `FROM` clause, but haven't been `SELECT`ed:
+
+```
+csci330_tgp=# SELECT distro, major_version, minor_version FROM unices ORDER BY release_date DESC;
+          distro          | major_version | minor_version 
+--------------------------+---------------+---------------
+ FreeBSD                  |            10 |             1
+ Ubuntu                   |            14 |            10
+ Debian                   |             7 |             7
+ Mac OS X                 |            10 |            10
+ Red Hat Enterprise Linux |             6 |             6
+ FreeBSD                  |             9 |             3
+ Red Hat Enterprise Linux |             7 |             0
+ Ubuntu                   |            14 |             4
+ Debian                   |             7 |             4
+ Red Hat Enterprise Linux |             6 |             5
+ Mac OS X                 |            10 |             9
+ Ubuntu                   |            13 |            10
+ FreeBSD                  |             8 |             4
+ Debian                   |             7 |             0
+ Ubuntu                   |            13 |             4
+ Ubuntu                   |            12 |             4
+ Red Hat Enterprise Linux |             6 |             0
+(17 rows)
+```
+
+LIMIT
+-----
+
+To only return the first *n* rows, use `LIMIT`:
+
+```
+csci330_tgp=# SELECT distro, major_version, minor_version FROM unices ORDER BY release_date DESC LIMIT 5;
+          distro          | major_version | minor_version 
+--------------------------+---------------+---------------
+ FreeBSD                  |            10 |             1
+ Ubuntu                   |            14 |            10
+ Debian                   |             7 |             7
+ Mac OS X                 |            10 |            10
+ Red Hat Enterprise Linux |             6 |             6
+(5 rows)
+```
+
 WHERE
 -----
 
-(TODO)
+The `WHERE` clause is extremely important to know. It's how you specify what rows should be in the result set based on their column values, so in that sense, it acts like a filter. Here's a query with a simple `WHERE`:
+
+```
+csci330_tgp=# SELECT * FROM unices WHERE distro = 'FreeBSD';
+ distro  | major_version | minor_version |    release_date     
+---------+---------------+---------------+---------------------
+ FreeBSD |             8 |             4 | 2013-06-02 00:00:00
+ FreeBSD |             9 |             3 | 2014-07-08 00:00:00
+ FreeBSD |            10 |             1 | 2014-11-06 00:00:00
+(3 rows)
+```
+
+That query only returned rows where, you guessed it, the "distro" field was "FreeBSD". Let's do a more complex one:
+
+```
+csci330_tgp=# SELECT * FROM unices WHERE release_date > '2014-01-01' AND (major_version > minor_version + 5 OR distro != 'Ubuntu');
+          distro          | major_version | minor_version |    release_date     
+--------------------------+---------------+---------------+---------------------
+ FreeBSD                  |             9 |             3 | 2014-07-08 00:00:00
+ FreeBSD                  |            10 |             1 | 2014-11-06 00:00:00
+ Mac OS X                 |            10 |            10 | 2014-10-16 00:00:00
+ Debian                   |             7 |             4 | 2014-02-08 00:00:00
+ Debian                   |             7 |             7 | 2014-10-18 00:00:00
+ Red Hat Enterprise Linux |             6 |             6 | 2014-10-14 00:00:00
+ Red Hat Enterprise Linux |             7 |             0 | 2014-06-09 00:00:00
+ Ubuntu                   |            14 |             4 | 2014-04-17 00:00:00
+(8 rows)
+```
+
+It's a bit of a silly query, but it illustrates some features:
+
+- Equality/inequality tests (`=`, `!=`, `<`, `>`, `<=`, `>=`)
+- Boolean logic (`AND`, `OR`)
+- Grouping (parentheses)
+- Simple arithmetic
+
+Your turn
+---------
+
+- Translate the above queries into normal English.
+- Think of some queries (in English) you could run on the table in this section, and translate them into SQL.
