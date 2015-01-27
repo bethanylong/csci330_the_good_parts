@@ -36,6 +36,7 @@ Targets
 - Good design
     - Views
     - Normalization
+    - Indexing
 - Basic administration/ops
     - Setup
     - Security

@@ -3,7 +3,7 @@ Beginning SQL
 
 Relational databases store their information in **tables**, which have rows and columns. Each column has a **name** and a **data type**. The name describes to the programmer or user what data go in the column and acts as a sort of handle to get to the data in the column. The type enforces what can get put into the column, and informs programs of what type the data should be when it's retrieved. Columns are defined upon creation of a table, and while it is possible to add, remove, or change columns, that can be tricky and usually indicates the emergence of an unforeseen application requirement.
 
-A row is a set of data that conforms to the column header. Each row contains a value under each column that is of the column's type, or a special value called `NULL` that essentially means there's no data in this row for that column. Practical constraints aside, a table can have any number of rows, and they can be added, removed, or changed at will.
+A row is a piece of data that conforms to the column header. Each row contains a value under each column that is of the column's type, or a special value called `NULL` that essentially means there's no data in this row for that column. Practical constraints aside, a table can have any number of rows, and they can be added, removed, or changed at will.
 
 Let's look at a table:
 
