@@ -25,10 +25,9 @@ Targets
 - Simple SQL intro (`SELECT`, `FROM`, `WHERE`, `ORDER BY`, ...)
 - Brief description of relations, and their role in modern RDBMSs
     - Things that real databases allow but relations don't (i.e. duplicate rows)
-- Creating and modifying databases and tables
+- Creating and modifying databases/tables/schemas
     - Column types and constraints
     - The `DROP` idiom, and `DROP` versus `DELETE`
-- Schemas
     - Foreign keys, primary keys, and enforcement of constraints
 - Tables as sets, and how/why to do set operations
 - Joins, and how to avoid doing them by hand
