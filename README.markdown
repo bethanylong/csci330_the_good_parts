@@ -28,14 +28,14 @@ Targets
 - Creating and modifying databases/tables/schemas
     - Column types and constraints
     - The `DROP` idiom, and `DROP` versus `DELETE`
-    - Foreign keys, primary keys, and enforcement of constraints
+- Composing more complex queries with `WITH` and nested queries
 - Tables as sets, and how/why to do set operations
 - Joins, and how to avoid doing them by hand
 - Aggregates, and `GROUP BY`/`HAVING`
-- Composing more complex queries with `WITH` and nested queries
 - Good design
     - Views
     - Normalization
+    - Foreign keys, primary keys, and enforcement of constraints
     - Indexing
 - Basic administration/ops
     - Setup
