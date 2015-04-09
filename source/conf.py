@@ -224,7 +224,7 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-  (master_doc, 'CSCI330TheGoodParts.tex', u'CSCI 330: The Good Parts Documentation',
+  (master_doc, 'CSCI330TheGoodParts.tex', u'CSCI 330: The Good Parts',
    u'Bethany Long', 'manual'),
 ]
 
@@ -254,7 +254,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    (master_doc, 'csci330thegoodparts', u'CSCI 330: The Good Parts Documentation',
+    (master_doc, 'csci330thegoodparts', u'CSCI 330: The Good Parts',
      [author], 1)
 ]
 
@@ -268,8 +268,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-  (master_doc, 'CSCI330TheGoodParts', u'CSCI 330: The Good Parts Documentation',
-   author, 'CSCI330TheGoodParts', 'One line description of project.',
+  (master_doc, 'CSCI330TheGoodParts', u'CSCI 330: The Good Parts',
+   author, 'CSCI330TheGoodParts', 'An unofficial database systems curriculum',
    'Miscellaneous'),
 ]
 
