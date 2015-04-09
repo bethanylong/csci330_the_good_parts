@@ -41,3 +41,4 @@ Contents
     Relations <relations>
     Creating and Modifying Schemas <creating_modifying_schemas>
     Adding and Modifying Data <adding_modifying_data>
+    Aggregate Functions <aggregates>
