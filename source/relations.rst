@@ -12,7 +12,8 @@ Sets
 ----
 
 A `set <http://en.wikipedia.org/wiki/Set_%28mathematics%29>`_ is a collection of
-unique objects and does not have any inherent order. Some examples of sets:
+unique objects and does not have any inherent order. Some examples of what sets
+could contain:
 
 - letters in the English alphabet
 - positive integers

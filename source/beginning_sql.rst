@@ -50,10 +50,11 @@ Viewing data: SELECT and FROM
 
 The query above is ``SELECT * FROM unices`` -- before that on the line is the
 prompt, and after that (the semicolon) indicates the query is done. This is the
-simplest query in SQL: every query needs a ``SELECT`` clause and a ``FROM`` clause.
-The ``SELECT`` describes what columns will be in the result, and the ``FROM``
-describes what table the rows and columns in the result are coming from. Here,
-the table is called ``unices`` (a plural of "unix", pronounced like "vertices").
+simplest query in SQL that lets you view database contents: every such query
+needs a ``SELECT`` clause and a ``FROM`` clause.  The ``SELECT`` describes what
+columns will be in the result, and the ``FROM`` describes what table the rows
+and columns in the result are coming from. Here, the table is called ``unices``
+(a plural of "unix", pronounced like "vertices").
 
 The ``*`` has a special meaning that indicates that all columns in the table will
 be shown in the result. If we want to just get certain columns, or if we want

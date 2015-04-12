@@ -1,7 +1,7 @@
 Aggregate functions
 ===================
 
-RDBMSs provide a set of functions that can be applied to selected columns.
+RDBMSs provide a set of functions that can be computed over selected columns.
 These are often used to compute statistics like average, minimum, and maximum
 values::
 

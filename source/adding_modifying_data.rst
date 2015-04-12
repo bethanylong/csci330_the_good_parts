@@ -16,7 +16,9 @@ Use ``INSERT`` to add a row to a table::
 The first set of parentheses specifies columns, and the second set gives the
 values under those respective columns. As long as the schema accomodates doing
 so (such as with ``DEFAULT`` values), you don't have to explicitly ``INSERT``
-into every column.
+into every column::
+
+    csci330_tgp=# INSERT INTO unices (distro, major_version, release_date) VALUES ('Research Unix', 7, '1979-01-01')
 
 UPDATE
 ------
