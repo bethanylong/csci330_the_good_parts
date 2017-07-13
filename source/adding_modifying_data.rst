@@ -1,3 +1,5 @@
+.. highlight:: sql
+
 Adding and modifying data in tables
 ===================================
 

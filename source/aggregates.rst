@@ -1,3 +1,5 @@
+.. highlight:: sql
+
 Aggregate functions
 ===================
 

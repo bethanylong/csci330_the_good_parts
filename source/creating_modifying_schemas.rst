@@ -1,3 +1,5 @@
+.. highlight:: sql
+
 Creating and Modifying Schemas
 ==============================
 
