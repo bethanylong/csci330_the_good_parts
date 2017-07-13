@@ -82,6 +82,10 @@ them returned in a certain order, we can specify them by name::
                 14 |            10 | Ubuntu
     (17 rows)
 
+Note: when writing queries that expect a certain set of columns in a certain
+order, it can be dangerous to use ``*`` since the schema could change and break
+your program! It's best to be explicit about column names.
+
 Sorting: ORDER BY
 -----------------
 

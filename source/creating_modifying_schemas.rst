@@ -10,7 +10,10 @@ Popular RDBMSs can hold many actual databases (in the schema sense), with all
 of them available at the same time. Commands to create databases and tables are
 run like any other query, but since you're typically only creating each
 database or table once, it makes the most sense to do that from the RDBMS's
-command line interface.
+command line interface rather than within your program itself. (There are
+certain situations where you might indeed want to create databases from your
+program, such as sqlite's temporary in-memory databases for one-time processing
+of ephemeral data.)
 
 All of these commands have a wide range of additional options, such as
 ownership and access privileges, which are available in your RDBMS's
@@ -25,6 +28,14 @@ Intuitively, create a new database with the ``CREATE DATABASE`` command::
 
 Once you've created the database and want to add tables, you'll need to connect
 to that database. In Postgres, that's ``\c databasename``.
+
+If you're using sqlite, you get a perfectly good database "for free" upon
+connecting to a new database file or using an in-memory database, so you can
+start creating and using tables right away without ``CREATE DATABASE``. With
+more conventional RDBMSs that run as their own separate service on the system
+(like Postgres), you will indeed want to create a database encompassing your
+application's tables. (In sqlite, the file you use is effectively your
+database.)
 
 CREATE TABLE
 ------------
@@ -42,7 +53,9 @@ standard SQL ``varchar`` or ``char``.
 
 Please avoid putting all your data in ``text``/``varchar`` columns if they're
 not actually all text. Parsing floats from strings is ~nobody's idea of a good
-time.
+time. Even worse, if you do store numbers as text and rely on your database to
+implicitly convert between types appropriately, you will likely run into strange
+and frustrating behavior. MySQL and its variants are notorious for this.
 
 You can create your columns with certain constraints that further specify what
 sort of data is stored there. To ensure that the special value ``NULL`` isn't
@@ -56,7 +69,7 @@ type::
 
     csci330_tgp=# CREATE TABLE unices (distro text, major_version integer NOT NULL, minor_version integer DEFAULT 0, release_date timestamp DEFAULT NOW());
 
-(``NOW()`` is a built-in function that returns the current date/time.)
+(``NOW()`` is a Postgres built-in function that returns the current date/time.)
 
 DROP DATABASE and DROP TABLE
 ----------------------------
