@@ -32,6 +32,7 @@ Targets
 - Composing more complex queries with `WITH` and nested queries
 - Tables as sets, and how/why to do set operations
 - Joins, and how to avoid doing them by hand
+- Stored procedures (with usability/magic caveats)
 - Good design
     - Views
     - Normalization
